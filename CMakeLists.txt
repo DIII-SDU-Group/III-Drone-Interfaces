@@ -24,8 +24,10 @@ find_package(std_msgs REQUIRED)
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/PowerlineDirection.msg"
   "msg/Powerline.msg"
+  "msg/ControlState.msg"
+  "action/CableLanding.action"
+  "action/Takeoff.action"
   DEPENDENCIES geometry_msgs std_msgs
 )
-
 
 ament_package()
