@@ -1,0 +1,6 @@
+geometry_msgs/PoseStamped target_pose
+---
+bool success
+---
+nav_msgs/Path planned_path
+geometry_msgs/PoseStamped vehicle_pose
