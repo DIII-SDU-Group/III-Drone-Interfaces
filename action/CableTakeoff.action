@@ -1,0 +1,5 @@
+float32 target_cable_distance
+---
+bool success
+---
+float32 distance_vehicle_to_cable

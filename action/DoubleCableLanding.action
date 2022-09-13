@@ -1,0 +1,8 @@
+int32 first_cable_id
+int32 second_cable_id
+---
+bool success
+float32 seconds_elapsed
+---
+string current_task
+float32 seconds_elapsed

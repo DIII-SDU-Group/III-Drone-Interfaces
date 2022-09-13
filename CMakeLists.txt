@@ -28,13 +28,16 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/ControlState.msg"
   "msg/CableDrumInfo.msg"
   "action/CableLanding.action"
+  "action/CableTakeoff.action"
   "action/Takeoff.action"
   "action/Landing.action"
   "action/FlyToPosition.action"
   "action/DrumManualRoll.action"
+  "action/DoubleCableLanding.action"
   "srv/DrumSetGain.srv"
   "srv/DrumSetMode.srv"
   "srv/DrumSetReference.srv"
+  "srv/SetGeneralTargetYaw.srv"
   DEPENDENCIES geometry_msgs std_msgs nav_msgs
 )
 
