@@ -1,0 +1,10 @@
+uint8 TERMINATION_TYPE_DURATION = 0
+uint8 TERMINATION_TYPE_DISTANCE = 1
+uint8 termination_type
+float32 duration_seconds
+float32 distance_meters
+float32 velocity
+---
+bool success
+---
+geometry_msgs/PoseStamped vehicle_pose
