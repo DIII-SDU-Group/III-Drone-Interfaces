@@ -36,6 +36,8 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "action/FlyAlongCable.action"
   "action/DrumManualRoll.action"
   "action/DoubleCableLanding.action"
+  "action/DisarmOnCable.action"
+  "action/ArmOnCable.action"
   "srv/DrumSetGain.srv"
   "srv/DrumSetMode.srv"
   "srv/DrumSetReference.srv"
