@@ -1,0 +1,6 @@
+uint8 OPERATING_MODE_OPEN = 0
+uint8 OPERATING_MODE_1 = 1
+uint8 OPERATING_MODE_2 = 2
+uint8 OPERATING_MODE_3 = 3
+
+uint8 operating_mode
