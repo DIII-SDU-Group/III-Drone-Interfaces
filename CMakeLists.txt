@@ -46,6 +46,10 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/DrumSetReference.srv"
   "srv/SetGeneralTargetYaw.srv"
   "srv/GripperCommand.srv"
+  "srv/InitiateCharging.srv"
+  "srv/InterruptCharging.srv"
+  "srv/SetTargetCableId.srv"
+  "srv/ProlongCharging.srv"
   DEPENDENCIES geometry_msgs std_msgs nav_msgs
 )
 

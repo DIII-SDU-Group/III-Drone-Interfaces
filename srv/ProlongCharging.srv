@@ -1,0 +1,12 @@
+uint8 PROLONG_MODE_UNTIL_INTERRUPTED = 0
+uint8 PROLONG_MODE_UNTIL_NEW_BATTERY_VOLTAGE = 1
+uint8 PROLONG_MODE_FOR_TIME = 2
+uint8 PROLONG_MODE_FOR_TIME_OR_NEW_BATTERY_VOLTAGE = 3
+uint8 PROLONG_MODE_CLEAR = 4
+
+uint8 prolong_mode
+
+float32 new_battery_voltage
+float32 prolong_time_s
+---
+bool success
