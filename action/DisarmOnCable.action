@@ -1,0 +1,5 @@
+---
+bool success
+---
+geometry_msgs/PoseStamped vehicle_pose
+float32 distance_vehicle_to_cable

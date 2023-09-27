@@ -27,6 +27,9 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/Powerline.msg"
   "msg/ControlState.msg"
   "msg/CableDrumInfo.msg"
+  "msg/ChargerOperatingMode.msg"
+  "msg/ChargerStatus.msg"
+  "msg/GripperStatus.msg"
   "action/CableLanding.action"
   "action/CableTakeoff.action"
   "action/Takeoff.action"
@@ -36,10 +39,17 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "action/FlyAlongCable.action"
   "action/DrumManualRoll.action"
   "action/DoubleCableLanding.action"
+  "action/DisarmOnCable.action"
+  "action/ArmOnCable.action"
   "srv/DrumSetGain.srv"
   "srv/DrumSetMode.srv"
   "srv/DrumSetReference.srv"
   "srv/SetGeneralTargetYaw.srv"
+  "srv/GripperCommand.srv"
+  "srv/InitiateCharging.srv"
+  "srv/InterruptCharging.srv"
+  "srv/SetTargetCableId.srv"
+  "srv/ProlongCharging.srv"
   DEPENDENCIES geometry_msgs std_msgs nav_msgs
 )
 
