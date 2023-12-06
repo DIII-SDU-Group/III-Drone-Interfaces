@@ -1,0 +1,14 @@
+string name
+string type
+
+string PARAMETER_TYPE_BOOL = "bool"
+string PARAMETER_TYPE_INT = "int"
+string PARAMETER_TYPE_FLOAT = "float"
+string PARAMETER_TYPE_STRING = "string"
+string PARAMETER_TYPE_BOOL_ARRAY = "bool_array"
+string PARAMETER_TYPE_INT_ARRAY = "int_array"
+string PARAMETER_TYPE_FLOAT_ARRAY = "float_array"
+string PARAMETER_TYPE_STRING_ARRAY = "string_array"
+---
+bool succeeded
+string message

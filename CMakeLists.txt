@@ -42,6 +42,14 @@ set(srvs
   srv/InterruptCharging.srv
   srv/SetTargetCableId.srv
   srv/ProlongCharging.srv
+  srv/DeclareParameter.srv
+  srv/GetParameterYaml.srv
+  srv/GetDeclaredParameters.srv
+  srv/SaveParameters.srv
+  srv/GetParameterFiles.srv
+  srv/LoadParameters.srv
+  srv/SetParameterFromGC.srv
+  srv/GetCurrentParameterFile.srv
 )
 
 # find dependencies
