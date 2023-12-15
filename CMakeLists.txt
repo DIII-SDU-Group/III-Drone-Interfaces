@@ -16,8 +16,9 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 endif()
 
 set(msgs
- msg/PowerlineDirection.msg
+ msg/ProjectionPlane.msg
  msg/Powerline.msg
+ msg/SingleLine.msg
  msg/ControlState.msg
  msg/ChargerOperatingMode.msg
  msg/ChargerStatus.msg

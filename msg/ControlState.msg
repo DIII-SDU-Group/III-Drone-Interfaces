@@ -18,5 +18,5 @@ uint8 CONTROL_STATE_ON_CABLE_DISARMED=15
 uint8 CONTROL_STATE_ARMING_ON_CABLE=16
 uint8 CONTROL_STATE_SETTING_OFFBOARD_ON_CABLE=17
 
-# Control state
+builtin_interfaces/Time timestamp
 uint8 state
