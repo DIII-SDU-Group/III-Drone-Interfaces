@@ -23,6 +23,10 @@ set(msgs
  msg/ChargerOperatingMode.msg
  msg/ChargerStatus.msg
  msg/GripperStatus.msg
+ msg/MPCMode.msg
+ msg/State.msg
+ msg/Reference.msg
+ msg/ReferenceTrajectory.msg
 )
 
 set(actions
@@ -51,6 +55,7 @@ set(srvs
   srv/LoadParameters.srv
   srv/SetParameterFromGC.srv
   srv/GetCurrentParameterFile.srv
+  srv/ComputeReferenceTrajectory.srv
 )
 
 # find dependencies

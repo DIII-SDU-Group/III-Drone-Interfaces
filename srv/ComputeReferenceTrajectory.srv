@@ -1,0 +1,10 @@
+iii_drone_interfaces/State state
+iii_drone_interfaces/Reference reference
+
+bool set_reference
+bool reset
+
+iii_drone_interfaces/MPCMode mpc_mode
+
+---
+iii_drone_interfaces/ReferenceTrajectory reference_trajectory
