@@ -27,17 +27,17 @@ set(msgs
  msg/State.msg
  msg/Reference.msg
  msg/ReferenceTrajectory.msg
+ msg/Target.msg
 )
 
 set(actions
   action/CableLanding.action
   action/CableTakeoff.action
-  action/Takeoff.action
-  action/Landing.action
   action/FlyToPosition.action
-  action/FlyUnderCable.action
-  action/DisarmOnCable.action
-  action/ArmOnCable.action
+  action/FlyToObject.action
+  action/Hover.action
+  action/HoverByObject.action
+  action/HoverOnCable.action
 )
 
 set(srvs
@@ -56,6 +56,7 @@ set(srvs
   srv/SetParameterFromGC.srv
   srv/GetCurrentParameterFile.srv
   srv/ComputeReferenceTrajectory.srv
+  srv/GetReference.srv
 )
 
 # find dependencies

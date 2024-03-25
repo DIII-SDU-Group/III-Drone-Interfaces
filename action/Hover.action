@@ -1,0 +1,3 @@
+float32 duration_s # The duration for which the maneuver controller will keep publishing references before becoming idle.
+---
+---

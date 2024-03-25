@@ -1,4 +1,6 @@
-geometry_msgs/PoseStamped target_pose
+string frame_id
+geometry_msgs/Point target_position
+float32 target_yaw
 ---
 bool success
 ---
