@@ -19,7 +19,6 @@ set(msgs
  msg/ProjectionPlane.msg
  msg/Powerline.msg
  msg/SingleLine.msg
- msg/ControlState.msg
  msg/ChargerOperatingMode.msg
  msg/ChargerStatus.msg
  msg/GripperStatus.msg

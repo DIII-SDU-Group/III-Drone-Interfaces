@@ -1,4 +1,4 @@
-int32 taget_cable_id
+int32 target_cable_id
 
 float32 target_cable_distance
 ---
