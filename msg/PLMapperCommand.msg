@@ -1,0 +1,6 @@
+uint8 PL_MAPPER_CMD_START = 0
+uint8 PL_MAPPER_CMD_STOP = 1
+uint8 PL_MAPPER_CMD_PAUSE = 2
+uint8 PL_MAPPER_CMD_RESET = 3
+
+uint8 pl_mapper_cmd
