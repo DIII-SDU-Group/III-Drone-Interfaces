@@ -2,5 +2,6 @@ iii_drone_interfaces/PLMapperCommand pl_mapper_cmd
 ---
 uint8 PL_MAPPER_ACK_SUCCESS = 0
 uint8 PL_MAPPER_ACK_INVALID_CMD = 1
+uint8 PL_MAPPER_ACK_INVALID_FIXED_LINE_ID = 2
 
 uint8 pl_mapper_ack
