@@ -19,6 +19,7 @@ set(msgs
  msg/ProjectionPlane.msg
  msg/Powerline.msg
  msg/SingleLine.msg
+ msg/PLMapperCommand.msg
  msg/ChargerOperatingMode.msg
  msg/ChargerStatus.msg
  msg/GripperStatus.msg
@@ -40,6 +41,7 @@ set(actions
 )
 
 set(srvs
+  srv/PLMapperCommand.srv
   srv/SetGeneralTargetYaw.srv
   srv/GripperCommand.srv
   srv/InitiateCharging.srv
