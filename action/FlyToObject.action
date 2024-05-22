@@ -1,6 +1,7 @@
 iii_drone_interfaces/Target target
 ---
 bool success
+iii_drone_interfaces/Reference target_reference
 ---
 nav_msgs/Path planned_path
 geometry_msgs/PoseStamped vehicle_pose

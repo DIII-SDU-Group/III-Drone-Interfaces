@@ -28,6 +28,9 @@ set(msgs
  msg/Reference.msg
  msg/ReferenceTrajectory.msg
  msg/Target.msg
+ msg/CombinedDroneAwareness.msg
+ msg/Maneuver.msg
+ msg/ManeuverQueue.msg
 )
 
 set(actions
@@ -58,6 +61,7 @@ set(srvs
   srv/GetCurrentParameterFile.srv
   srv/ComputeReferenceTrajectory.srv
   srv/GetReference.srv
+  srv/RegisterOffboardMode.srv
 )
 
 # find dependencies

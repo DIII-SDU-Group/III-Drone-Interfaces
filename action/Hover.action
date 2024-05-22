@@ -1,3 +1,4 @@
 float32 duration_s # The duration for which the maneuver controller will keep publishing references before becoming idle.
+bool sustain_action # If true, the maneuver controller will sustain the action running for the duration of the maneuver. Otherwise, it will succeed immediately but keep providing references for the duration.
 ---
 ---
