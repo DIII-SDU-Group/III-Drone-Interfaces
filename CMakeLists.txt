@@ -59,6 +59,7 @@ set(srvs
   srv/LoadParameters.srv
   srv/SetParameterFromGC.srv
   srv/GetCurrentParameterFile.srv
+  srv/SetCurrentParameterFileAsDefault.srv
   srv/ComputeReferenceTrajectory.srv
   srv/GetReference.srv
   srv/RegisterOffboardMode.srv
