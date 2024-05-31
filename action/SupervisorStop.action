@@ -6,3 +6,7 @@ string stop_from_node
 
 ---
 bool success
+string message
+
+---
+string message

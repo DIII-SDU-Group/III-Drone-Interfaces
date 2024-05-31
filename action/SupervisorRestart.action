@@ -1,0 +1,9 @@
+uint8 RESTART_TYPE_WARM = 0
+uint8 RESTART_TYPE_COLD = 1
+
+uint8 restart_type
+---
+bool success
+string message
+---
+string message

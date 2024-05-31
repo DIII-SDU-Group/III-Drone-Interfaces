@@ -41,6 +41,10 @@ set(actions
   action/Hover.action
   action/HoverByObject.action
   action/HoverOnCable.action
+  action/SupervisorStart.action
+  action/SupervisorStop.action
+  action/SupervisorRestart.action
+  action/SupervisorShutdown.action
 )
 
 set(srvs
@@ -63,9 +67,6 @@ set(srvs
   srv/ComputeReferenceTrajectory.srv
   srv/GetReference.srv
   srv/RegisterOffboardMode.srv
-  srv/SupervisorStart.srv
-  srv/SupervisorStop.srv
-  srv/SupervisorShutdown.srv
 )
 
 # find dependencies
