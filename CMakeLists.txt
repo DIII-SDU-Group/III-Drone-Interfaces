@@ -63,6 +63,9 @@ set(srvs
   srv/ComputeReferenceTrajectory.srv
   srv/GetReference.srv
   srv/RegisterOffboardMode.srv
+  srv/SupervisorStart.srv
+  srv/SupervisorStop.srv
+  srv/SupervisorShutdown.srv
 )
 
 # find dependencies
