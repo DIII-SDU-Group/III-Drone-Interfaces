@@ -2,7 +2,7 @@ uint8 STOP_ACTION_DEACTIVATE=0
 uint8 STOP_ACTION_CLEANUP=1
 
 uint8 action
-string stop_from_node
+string[] select_nodes
 
 ---
 bool success

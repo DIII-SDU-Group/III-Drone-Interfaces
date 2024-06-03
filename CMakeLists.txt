@@ -67,6 +67,7 @@ set(srvs
   srv/ComputeReferenceTrajectory.srv
   srv/GetReference.srv
   srv/RegisterOffboardMode.srv
+  srv/GetManagedNodes.srv
 )
 
 # find dependencies
