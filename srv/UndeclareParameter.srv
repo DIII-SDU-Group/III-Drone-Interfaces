@@ -1,0 +1,5 @@
+string name
+string node_name
+---
+bool succeeded
+string message

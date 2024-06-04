@@ -1,5 +1,6 @@
 string name
 string type
+string node_name
 
 string PARAMETER_TYPE_BOOL = "bool"
 string PARAMETER_TYPE_INT = "int"
