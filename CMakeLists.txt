@@ -56,7 +56,7 @@ set(srvs
   srv/SetTargetCableId.srv
   srv/ProlongCharging.srv
   srv/DeclareParameter.srv
-  srv/UndeclareParameter.srv
+  srv/UndeclareParameter.srv 
   srv/GetParameterYaml.srv
   srv/GetDeclaredParameters.srv
   srv/SaveParameters.srv
