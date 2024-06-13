@@ -49,6 +49,7 @@ set(actions
 
 set(srvs
   srv/PLMapperCommand.srv
+  srv/SystemCommand.srv
   srv/SetGeneralTargetYaw.srv
   srv/GripperCommand.srv
   srv/InitiateCharging.srv
