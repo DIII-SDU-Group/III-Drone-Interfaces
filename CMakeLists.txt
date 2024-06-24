@@ -31,6 +31,7 @@ set(msgs
  msg/CombinedDroneAwareness.msg
  msg/Maneuver.msg
  msg/ManeuverQueue.msg
+ msg/StringStamped.msg
 )
 
 set(actions
@@ -70,6 +71,8 @@ set(srvs
   srv/GetReference.srv
   srv/RegisterOffboardMode.srv
   srv/GetManagedNodes.srv
+  srv/UpdatePowerlineOverview.srv
+  srv/GetPowerlineOverview.srv
 )
 
 # find dependencies
