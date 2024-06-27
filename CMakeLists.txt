@@ -23,7 +23,7 @@ set(msgs
  msg/ChargerOperatingMode.msg
  msg/ChargerStatus.msg
  msg/GripperStatus.msg
- msg/MPCMode.msg
+ msg/TrajectoryMode.msg
  msg/State.msg
  msg/Reference.msg
  msg/ReferenceTrajectory.msg
@@ -73,6 +73,8 @@ set(srvs
   srv/GetManagedNodes.srv
   srv/UpdatePowerlineOverview.srv
   srv/GetPowerlineOverview.srv
+  srv/StoreCurrentState.srv
+  srv/LoadStoredState.srv
 )
 
 # find dependencies
