@@ -8,6 +8,7 @@ iii_drone_interfaces/State state
 bool armed
 bool offboard
 
+bool has_target
 iii_drone_interfaces/Target target
 bool target_position_known
 
