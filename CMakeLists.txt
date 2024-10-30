@@ -75,6 +75,7 @@ set(srvs
   srv/GetPowerlineOverview.srv
   srv/StoreCurrentState.srv
   srv/LoadStoredState.srv
+  srv/WriteBehaviorTreeModelXML.srv
 )
 
 # find dependencies
