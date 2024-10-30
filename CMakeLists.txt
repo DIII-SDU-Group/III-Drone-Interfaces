@@ -32,6 +32,7 @@ set(msgs
  msg/Maneuver.msg
  msg/ManeuverQueue.msg
  msg/StringStamped.msg
+ msg/TrajectoryComputeTime.msg
 )
 
 set(actions
