@@ -77,6 +77,7 @@ set(srvs
   srv/StoreCurrentState.srv
   srv/LoadStoredState.srv
   srv/WriteBehaviorTreeModelXML.srv
+  srv/ModeExecutorScheduleRequest.srv
 )
 
 # find dependencies
