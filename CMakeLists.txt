@@ -47,6 +47,7 @@ set(actions
   action/SupervisorStop.action
   action/SupervisorRestart.action
   action/SupervisorShutdown.action
+  action/ModeExecutorAction.action
 )
 
 set(srvs
@@ -77,7 +78,6 @@ set(srvs
   srv/StoreCurrentState.srv
   srv/LoadStoredState.srv
   srv/WriteBehaviorTreeModelXML.srv
-  srv/ModeExecutorScheduleRequest.srv
 )
 
 # find dependencies
