@@ -53,14 +53,9 @@ set(actions
 set(srvs
   srv/PLMapperCommand.srv
   srv/SystemCommand.srv
-  srv/SetGeneralTargetYaw.srv
   srv/GripperCommand.srv
-  srv/InitiateCharging.srv
-  srv/InterruptCharging.srv
-  srv/SetTargetCableId.srv
-  srv/ProlongCharging.srv
-  srv/DeclareParameter.srv
-  srv/UndeclareParameter.srv 
+  srv/DeclareParameters.srv
+  srv/UndeclareParameters.srv 
   srv/GetParameterYaml.srv
   srv/GetDeclaredParameters.srv
   srv/SaveParameters.srv
@@ -86,12 +81,13 @@ find_package(rosidl_default_generators REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(rcl_interfaces REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msgs}
   ${actions}
   ${srvs}
-  DEPENDENCIES geometry_msgs std_msgs nav_msgs
+  DEPENDENCIES geometry_msgs std_msgs nav_msgs rcl_interfaces
 )
 
 ament_package()

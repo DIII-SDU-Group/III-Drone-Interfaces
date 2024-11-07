@@ -1,5 +1,5 @@
-string name
-string type
+string[] names
+string[] types
 string node_name
 
 string PARAMETER_TYPE_BOOL = "bool"
@@ -13,3 +13,4 @@ string PARAMETER_TYPE_STRING_ARRAY = "string_array"
 ---
 bool succeeded
 string message
+rcl_interfaces/ParameterValue[] values
