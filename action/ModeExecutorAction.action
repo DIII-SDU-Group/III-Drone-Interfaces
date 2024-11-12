@@ -1,10 +1,12 @@
 uint8 REQUEST_TAKEOFF = 1
 uint8 REQUEST_LAND = 2
 uint8 REQUEST_ARM = 3
+uint8 REQUEST_DISARM = 4
 
 uint8 request
 
 float32 takeoff_altitude
+bool force_disarm
 
 ---
 ---
