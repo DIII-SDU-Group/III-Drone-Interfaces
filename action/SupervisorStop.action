@@ -3,6 +3,7 @@ uint8 STOP_ACTION_CLEANUP=1
 
 uint8 action
 string[] select_nodes
+bool ignore_dependencies
 
 ---
 bool success

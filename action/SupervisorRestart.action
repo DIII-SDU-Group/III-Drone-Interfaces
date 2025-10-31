@@ -3,6 +3,7 @@ uint8 RESTART_TYPE_COLD = 1
 
 uint8 restart_type
 string[] select_nodes
+bool ignore_dependencies
 ---
 bool success
 string message

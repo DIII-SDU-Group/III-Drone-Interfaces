@@ -23,7 +23,7 @@ set(msgs
  msg/ChargerOperatingMode.msg
  msg/ChargerStatus.msg
  msg/GripperStatus.msg
- msg/MPCMode.msg
+ msg/TrajectoryMode.msg
  msg/State.msg
  msg/Reference.msg
  msg/ReferenceTrajectory.msg
@@ -31,6 +31,8 @@ set(msgs
  msg/CombinedDroneAwareness.msg
  msg/Maneuver.msg
  msg/ManeuverQueue.msg
+ msg/StringStamped.msg
+ msg/TrajectoryComputeTime.msg
 )
 
 set(actions
@@ -45,18 +47,15 @@ set(actions
   action/SupervisorStop.action
   action/SupervisorRestart.action
   action/SupervisorShutdown.action
+  action/ModeExecutorAction.action
 )
 
 set(srvs
   srv/PLMapperCommand.srv
-  srv/SetGeneralTargetYaw.srv
+  srv/SystemCommand.srv
   srv/GripperCommand.srv
-  srv/InitiateCharging.srv
-  srv/InterruptCharging.srv
-  srv/SetTargetCableId.srv
-  srv/ProlongCharging.srv
-  srv/DeclareParameter.srv
-  srv/UndeclareParameter.srv 
+  srv/DeclareParameters.srv
+  srv/UndeclareParameters.srv 
   srv/GetParameterYaml.srv
   srv/GetDeclaredParameters.srv
   srv/SaveParameters.srv
@@ -69,6 +68,11 @@ set(srvs
   srv/GetReference.srv
   srv/RegisterOffboardMode.srv
   srv/GetManagedNodes.srv
+  srv/UpdatePowerlineOverview.srv
+  srv/GetPowerlineOverview.srv
+  srv/StoreCurrentState.srv
+  srv/LoadStoredState.srv
+  srv/WriteBehaviorTreeModelXML.srv
 )
 
 # find dependencies
@@ -77,12 +81,13 @@ find_package(rosidl_default_generators REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(rcl_interfaces REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msgs}
   ${actions}
   ${srvs}
-  DEPENDENCIES geometry_msgs std_msgs nav_msgs
+  DEPENDENCIES geometry_msgs std_msgs nav_msgs rcl_interfaces
 )
 
 ament_package()

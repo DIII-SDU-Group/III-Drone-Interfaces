@@ -8,6 +8,7 @@ iii_drone_interfaces/State state
 bool armed
 bool offboard
 
+bool has_target
 iii_drone_interfaces/Target target
 bool target_position_known
 
@@ -16,5 +17,6 @@ uint8 drone_location
 int32 on_cable_id
 
 float32 ground_altitude_estimate
+float32 ground_altitude_estimate_amsl
 
 bool gripper_open
