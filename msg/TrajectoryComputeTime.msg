@@ -1,0 +1,2 @@
+uint64 nanoseconds
+string trajectory_type

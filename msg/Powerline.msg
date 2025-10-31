@@ -1,4 +1,3 @@
-std_msgs/Header header
-geometry_msgs/PoseStamped[] poses
-int32[] ids
-int32 count
+builtin_interfaces/Time stamp
+iii_drone_interfaces/SingleLine[] lines
+iii_drone_interfaces/ProjectionPlane projection_plane

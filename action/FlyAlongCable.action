@@ -1,7 +1,0 @@
-float32 distance
-float32 velocity
-bool inverse_direction
----
-bool success
----
-geometry_msgs/PoseStamped vehicle_pose

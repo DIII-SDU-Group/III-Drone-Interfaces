@@ -1,0 +1,2 @@
+iii_drone_interfaces/Maneuver current_maneuver
+iii_drone_interfaces/Maneuver[] scheduled_maneuvers

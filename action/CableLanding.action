@@ -2,7 +2,6 @@ int32 target_cable_id
 ---
 bool success
 ---
-nav_msgs/Path planned_macro_path
 nav_msgs/Path planned_path
 geometry_msgs/PoseStamped vehicle_pose
 float32 distance_vehicle_to_cable
