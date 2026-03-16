@@ -15,6 +15,8 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
+include(CTest)
+
 set(msgs
  msg/ProjectionPlane.msg
  msg/Powerline.msg
@@ -54,6 +56,9 @@ set(srvs
   srv/PLMapperCommand.srv
   srv/SystemCommand.srv
   srv/GripperCommand.srv
+  srv/InitiateCharging.srv
+  srv/InterruptCharging.srv
+  srv/ProlongCharging.srv
   srv/DeclareParameters.srv
   srv/UndeclareParameters.srv 
   srv/GetParameterYaml.srv
@@ -62,6 +67,8 @@ set(srvs
   srv/GetParameterFiles.srv
   srv/LoadParameters.srv
   srv/SetParameterFromGC.srv
+  srv/SetGeneralTargetYaw.srv
+  srv/SetTargetCableId.srv
   srv/GetCurrentParameterFile.srv
   srv/SetCurrentParameterFileAsDefault.srv
   srv/ComputeReferenceTrajectory.srv
@@ -89,5 +96,13 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   ${srvs}
   DEPENDENCIES geometry_msgs std_msgs nav_msgs rcl_interfaces
 )
+
+if(BUILD_TESTING)
+  find_package(ament_cmake_pytest REQUIRED)
+
+  ament_add_pytest_test(iii_drone_interfaces_manifest_test
+    test/test_interface_manifest.py
+  )
+endif()
 
 ament_package()
