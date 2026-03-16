@@ -1,12 +1,67 @@
-# III-Drone-ROS2-Interfaces
+# III-Drone-Interfaces
 
-## Compatibility
-This version is compatible with
-- `ROS2 Humble`
-- [`PX4-Autopilot` DIII fork tag `v1.14.0-rc2`](https://github.com/DIII-SDU-Group/PX4-Autopilot/tree/v1.14.0-rc2)
-- [`px4_msgs` DIII fork tag `v1.14`](https://github.com/DIII-SDU-Group/px4_msgs/tree/v1.14)
-- [`micro-ROS-agent` DIII fork tag `III-Drone-v2.2`](https://github.com/DIII-SDU-Group/micro-ROS-Agent/tree/III-Drone-v2.2)
-- [`micro_ros_msgs` DIII fork tag `III-Drone-v2.2`](https://github.com/DIII-SDU-Group/micro_ros_msgs/tree/III-Drone-v2.2)
-- [`III-Drone-Core` v2.2](https://github.com/DIII-SDU-Group/III-Drone-Core/tree/v2.2-staging)
+`iii_drone_interfaces` defines the ROS interface contract shared across the III packages. It is the transport layer for messages, services, and actions consumed by control, mission, supervision, simulation, the CLI, and ground control.
 
-See [`III-Drone-Core`](https://github.com/DIII-SDU-Group/III-Drone-Core/tree/v2.2-staging) for more information.
+## Package Role
+
+This package exists to centralize:
+
+- message schemas for state, targets, maneuvers, references, and perception products
+- service schemas for configuration, supervision, charging/gripper control, and mission support
+- action schemas consumed by supervision and operator tooling
+
+Keeping the interfaces here prevents package-to-package schema drift and makes transport changes explicit.
+
+## Interface Inventory
+
+### Messages
+
+The message set covers several areas:
+
+- control/state: `State`, `Reference`, `ReferenceTrajectory`, `TrajectoryMode`, `TrajectoryComputeTime`
+- awareness/mission: `CombinedDroneAwareness`, `Maneuver`, `ManeuverQueue`, `Target`, `StringStamped`
+- perception: `ProjectionPlane`, `SingleLine`, `Powerline`, `PLMapperCommand`
+- payload/charging: `GripperStatus`, `ChargerStatus`, `ChargerOperatingMode`
+
+### Services
+
+The service layer includes:
+
+- configuration services such as `GetParameterYaml`, `GetDeclaredParameters`, `LoadParameters`, `SaveParameters`, `SetParameterFromGC`
+- mission/control services such as `ComputeReferenceTrajectory`, `GetReference`, `SetGeneralTargetYaw`, `SetTargetCableId`
+- supervision/system services such as `SystemCommand`, `GetManagedNodes`
+- payload/perception services such as `GripperCommand`, `PLMapperCommand`, `UpdatePowerlineOverview`
+
+### Actions
+
+Actions are declared in this package and consumed primarily by the supervision and CLI stack for long-running system-management flows.
+
+## Generation Model
+
+`iii_drone_interfaces` is a pure interface package. It should not contain runtime logic. Its job is to:
+
+- declare interface files
+- export the `rosidl_interface_packages` group
+- generate code through `rosidl_default_generators`
+
+## Tests
+
+The current test coverage checks:
+
+- every `.msg`, `.srv`, and `.action` file on disk is declared in CMake
+- required package metadata and generation dependencies are present
+- core interface categories remain available in the manifest
+
+Typical package-only commands:
+
+```bash
+colcon build --packages-select iii_drone_interfaces
+colcon test --packages-select iii_drone_interfaces --ctest-args --output-on-failure
+colcon test-result --verbose
+```
+
+## Maintenance Rules
+
+- treat interface changes as cross-package changes
+- update downstream adapters/tests when fields are added or renamed
+- keep file declarations in sync with `CMakeLists.txt`; the tests enforce this
