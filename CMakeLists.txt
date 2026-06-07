@@ -20,6 +20,8 @@ include(CTest)
 set(msgs
  msg/ProjectionPlane.msg
  msg/Powerline.msg
+ msg/Pylon.msg
+ msg/PylonOverview.msg
  msg/SingleLine.msg
  msg/PLMapperCommand.msg
  msg/ChargerOperatingMode.msg
@@ -35,16 +37,22 @@ set(msgs
  msg/ManeuverQueue.msg
  msg/StringStamped.msg
  msg/TrajectoryComputeTime.msg
+ msg/SubsystemHealthStatus.msg
+ msg/SystemHealthStatus.msg
+ msg/MissionModeStatus.msg
+ msg/CustomOperationModeStatus.msg
 )
 
 set(actions
   action/CableLanding.action
   action/CableTakeoff.action
+  action/CableAwareFlyToPosition.action
   action/FlyToPosition.action
   action/FlyToObject.action
   action/Hover.action
   action/HoverByObject.action
   action/HoverOnCable.action
+  action/CustomOperation.action
   action/SupervisorStart.action
   action/SupervisorStop.action
   action/SupervisorRestart.action
@@ -73,13 +81,21 @@ set(srvs
   srv/SetCurrentParameterFileAsDefault.srv
   srv/ComputeReferenceTrajectory.srv
   srv/GetReference.srv
+  srv/ClearManeuverQueue.srv
   srv/RegisterOffboardMode.srv
   srv/GetManagedNodes.srv
   srv/UpdatePowerlineOverview.srv
   srv/GetPowerlineOverview.srv
+  srv/StorePylonOverview.srv
+  srv/GetPylonOverview.srv
+  srv/ClearPylonOverview.srv
+  srv/StartRosbagRecording.srv
+  srv/StopRosbagRecording.srv
+  srv/GetRosbagRecordingStatus.srv
   srv/StoreCurrentState.srv
   srv/LoadStoredState.srv
   srv/WriteBehaviorTreeModelXML.srv
+  srv/OverrideMissionSpecification.srv
 )
 
 # find dependencies
@@ -88,13 +104,14 @@ find_package(rosidl_default_generators REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(builtin_interfaces REQUIRED)
 find_package(rcl_interfaces REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msgs}
   ${actions}
   ${srvs}
-  DEPENDENCIES geometry_msgs std_msgs nav_msgs rcl_interfaces
+  DEPENDENCIES geometry_msgs std_msgs nav_msgs builtin_interfaces rcl_interfaces
 )
 
 if(BUILD_TESTING)

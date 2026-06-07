@@ -1,5 +1,7 @@
 iii_drone_interfaces/State state
 iii_drone_interfaces/Reference reference
+bool use_start_reference
+iii_drone_interfaces/Reference start_reference
 
 bool set_reference
 bool reset
@@ -9,4 +11,6 @@ bool use_mpc
 iii_drone_interfaces/TrajectoryMode trajectory_mode
 
 ---
+bool success
+string error_message
 iii_drone_interfaces/ReferenceTrajectory reference_trajectory

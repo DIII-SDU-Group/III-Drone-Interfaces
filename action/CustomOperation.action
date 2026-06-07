@@ -1,0 +1,12 @@
+string operation
+string arguments_json
+string request_id
+---
+bool success
+string operation
+string result_json
+string error
+---
+string operation
+string state
+string feedback_json

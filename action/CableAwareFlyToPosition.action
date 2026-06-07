@@ -1,7 +1,6 @@
 string frame_id
 geometry_msgs/Point target_position
 float32 target_yaw
-bool blend_to_next
 ---
 bool success
 iii_drone_interfaces/Reference target_reference

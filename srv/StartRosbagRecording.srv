@@ -1,0 +1,11 @@
+string recording_id
+string output_dir
+bool all_topics
+string[] topics
+bool include_hidden_topics
+---
+bool success
+string message
+string recording_id
+string output_dir
+uint32 pid

@@ -54,8 +54,48 @@ def test_interface_manifest_has_messages_and_services():
     service_files = sorted(path.name for path in (PACKAGE_ROOT / "srv").glob("*.srv"))
 
     assert "CombinedDroneAwareness.msg" in message_files
+    assert "SystemHealthStatus.msg" in message_files
+    assert "MissionModeStatus.msg" in message_files
+    assert "CustomOperationModeStatus.msg" in message_files
+    assert "SubsystemHealthStatus.msg" in message_files
     assert "ReferenceTrajectory.msg" in message_files
     assert "SystemCommand.srv" in service_files
     assert "UpdatePowerlineOverview.srv" in service_files
+    assert "OverrideMissionSpecification.srv" in service_files
     assert len(message_files) >= 10
     assert len(service_files) >= 10
+
+
+def test_gui_v2_health_messages_cover_required_status_fields():
+    required_fields = {
+        "SystemHealthStatus.msg": [
+            "bool daemon_ready",
+            "bool runtime_booted",
+            "bool system_active",
+            "string[] degraded_reasons",
+            "iii_drone_interfaces/SubsystemHealthStatus[] subsystems",
+        ],
+        "MissionModeStatus.msg": [
+            "string active_mission_specification",
+            "bool required_modes_registered",
+            "string owned_mode",
+            "string control_owner",
+        ],
+        "CustomOperationModeStatus.msg": [
+            "bool custom_operation_modes_registered",
+            "string active_operation",
+            "string owned_mode",
+            "string control_owner",
+        ],
+        "SubsystemHealthStatus.msg": [
+            "builtin_interfaces/Time source_stamp",
+            "bool ready",
+            "bool degraded",
+            "string[] degraded_reasons",
+        ],
+    }
+
+    for filename, fields in required_fields.items():
+        content = (PACKAGE_ROOT / "msg" / filename).read_text()
+        for field in fields:
+            assert field in content
