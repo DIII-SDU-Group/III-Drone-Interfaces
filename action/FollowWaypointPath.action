@@ -1,0 +1,21 @@
+string frame_id
+iii_drone_interfaces/Waypoint[] waypoints
+
+bool repeat
+uint32 repeat_from_index
+
+# Values <= 0 select configured defaults.
+float32 nominal_speed_m_s
+float32 max_acceleration_m_s2
+float32 max_jerk_m_s3
+---
+bool success
+uint32 final_waypoint_index
+string reason
+iii_drone_interfaces/Reference target_reference
+---
+uint32 active_waypoint_index
+uint32 active_primitive_index
+float32 path_progress
+nav_msgs/Path planned_path
+geometry_msgs/PoseStamped vehicle_pose

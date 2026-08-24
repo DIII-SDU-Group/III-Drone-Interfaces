@@ -18,10 +18,19 @@ endif()
 include(CTest)
 
 set(msgs
+ msg/SimulatorDroneState.msg
+ msg/ConductorGeometry.msg
+ msg/StaticConductorGeometry.msg
+ msg/RadarPointSource.msg
+ msg/RadarScanGroundTruth.msg
+ msg/CameraConductorVisibility.msg
+ msg/CameraFrameGroundTruth.msg
  msg/ProjectionPlane.msg
- msg/Powerline.msg
+  msg/Powerline.msg
+  msg/PowerlineOverviewStatus.msg
  msg/Pylon.msg
- msg/PylonOverview.msg
+  msg/PylonOverview.msg
+  msg/PylonOverviewStatus.msg
  msg/SingleLine.msg
  msg/PLMapperCommand.msg
  msg/ChargerOperatingMode.msg
@@ -30,8 +39,11 @@ set(msgs
  msg/TrajectoryMode.msg
  msg/State.msg
  msg/Reference.msg
+ msg/ManeuverReferenceStream.msg
+ msg/ManeuverReferenceAck.msg
  msg/ReferenceTrajectory.msg
  msg/Target.msg
+ msg/Waypoint.msg
  msg/CombinedDroneAwareness.msg
  msg/Maneuver.msg
  msg/ManeuverQueue.msg
@@ -40,6 +52,9 @@ set(msgs
  msg/SubsystemHealthStatus.msg
  msg/SystemHealthStatus.msg
  msg/MissionModeStatus.msg
+  msg/MissionModeRegistryEntry.msg
+  msg/MissionIntentStatus.msg
+ msg/InspectionStartEligibility.msg
  msg/CustomOperationModeStatus.msg
 )
 
@@ -48,6 +63,7 @@ set(actions
   action/CableTakeoff.action
   action/CableAwareFlyToPosition.action
   action/FlyToPosition.action
+  action/FollowWaypointPath.action
   action/FlyToObject.action
   action/Hover.action
   action/HoverByObject.action
@@ -75,12 +91,18 @@ set(srvs
   srv/GetParameterFiles.srv
   srv/LoadParameters.srv
   srv/SetParameterFromGC.srv
+  srv/SetBootParameter.srv
+  srv/GetPendingBootParameters.srv
+  srv/ActivatePendingBootParameters.srv
   srv/SetGeneralTargetYaw.srv
   srv/SetTargetCableId.srv
   srv/GetCurrentParameterFile.srv
   srv/SetCurrentParameterFileAsDefault.srv
   srv/ComputeReferenceTrajectory.srv
   srv/GetReference.srv
+  srv/PauseReferenceStream.srv
+  srv/RebaseReferenceStream.srv
+  srv/CommitReferenceStream.srv
   srv/ClearManeuverQueue.srv
   srv/RegisterOffboardMode.srv
   srv/GetManagedNodes.srv
@@ -89,6 +111,7 @@ set(srvs
   srv/StorePylonOverview.srv
   srv/GetPylonOverview.srv
   srv/ClearPylonOverview.srv
+  srv/CaptureCurrentPylon.srv
   srv/StartRosbagRecording.srv
   srv/StopRosbagRecording.srv
   srv/GetRosbagRecordingStatus.srv

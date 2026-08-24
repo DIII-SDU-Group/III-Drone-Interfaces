@@ -56,6 +56,7 @@ def test_interface_manifest_has_messages_and_services():
     assert "CombinedDroneAwareness.msg" in message_files
     assert "SystemHealthStatus.msg" in message_files
     assert "MissionModeStatus.msg" in message_files
+    assert "MissionModeRegistryEntry.msg" in message_files
     assert "CustomOperationModeStatus.msg" in message_files
     assert "SubsystemHealthStatus.msg" in message_files
     assert "ReferenceTrajectory.msg" in message_files
@@ -64,6 +65,31 @@ def test_interface_manifest_has_messages_and_services():
     assert "OverrideMissionSpecification.srv" in service_files
     assert len(message_files) >= 10
     assert len(service_files) >= 10
+
+
+def test_simulation_ground_truth_interfaces_encode_required_alignment_and_classes():
+    required = {
+        "SimulatorDroneState.msg": [
+            "std_msgs/Header header", "string source_link_name",
+            "geometry_msgs/Pose pose_world", "geometry_msgs/Twist twist_world",
+        ],
+        "RadarPointSource.msg": [
+            "uint8 VALID_PHYSICAL_CONDUCTOR=1", "uint8 PHANTOM=2",
+            "uint8 CLUTTER_NO_PHYSICAL_SOURCE=3", "uint32 source_point_index",
+            "string physical_conductor_id", "geometry_msgs/Point ideal_generating_point_world",
+            "geometry_msgs/Point nearest_physical_point_world",
+        ],
+        "RadarScanGroundTruth.msg": ["uint64 scan_sequence", "RadarPointSource[] points"],
+        "CameraFrameGroundTruth.msg": [
+            "uint64 frame_sequence", "uint32 image_width", "uint32 image_height",
+            "CameraConductorVisibility[] conductors",
+        ],
+        "StaticConductorGeometry.msg": ["ConductorGeometry[] conductors"],
+    }
+    for filename, fragments in required.items():
+        content = (PACKAGE_ROOT / "msg" / filename).read_text()
+        for fragment in fragments:
+            assert fragment in content
 
 
 def test_gui_v2_health_messages_cover_required_status_fields():
@@ -78,8 +104,19 @@ def test_gui_v2_health_messages_cover_required_status_fields():
         "MissionModeStatus.msg": [
             "string active_mission_specification",
             "bool required_modes_registered",
+            "iii_drone_interfaces/MissionModeRegistryEntry[] modes",
             "string owned_mode",
             "string control_owner",
+        ],
+        "MissionModeRegistryEntry.msg": [
+            "string mode_key",
+            "string display_name",
+            "uint8 mode_id",
+            "bool mode_id_valid",
+            "bool tree_running",
+            "bool tree_finished",
+            "bool tree_success_valid",
+            "string degraded_reason",
         ],
         "CustomOperationModeStatus.msg": [
             "bool custom_operation_modes_registered",
@@ -99,3 +136,40 @@ def test_gui_v2_health_messages_cover_required_status_fields():
         content = (PACKAGE_ROOT / "msg" / filename).read_text()
         for field in fields:
             assert field in content
+
+
+def test_maneuver_reference_stream_contract_is_explicit():
+    required_fields = {
+        "ManeuverReferenceStream.msg": [
+            "string stream_id",
+            "uint64 sequence",
+            "builtin_interfaces/Time produced_at",
+            "builtin_interfaces/Time valid_until",
+            "float64 trajectory_time_s",
+            "uint8 state",
+            "bool is_valid",
+            "iii_drone_interfaces/Reference reference",
+        ],
+        "ManeuverReferenceAck.msg": [
+            "string stream_id",
+            "uint64 last_applied_sequence",
+            "builtin_interfaces/Time applied_at",
+            "iii_drone_interfaces/State vehicle_state",
+            "uint8 consumer_status",
+        ],
+    }
+    for filename, fields in required_fields.items():
+        content = (PACKAGE_ROOT / "msg" / filename).read_text()
+        for field in fields:
+            assert field in content
+
+    for filename in [
+        "PauseReferenceStream.srv",
+        "RebaseReferenceStream.srv",
+        "CommitReferenceStream.srv",
+    ]:
+        assert (PACKAGE_ROOT / "srv" / filename).exists()
+
+    commit_contract = (PACKAGE_ROOT / "srv" / "CommitReferenceStream.srv").read_text()
+    assert "string stream_id" in commit_contract
+    assert "uint64 prepared_sequence" in commit_contract

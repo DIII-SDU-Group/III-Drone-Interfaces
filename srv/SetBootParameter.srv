@@ -1,0 +1,7 @@
+string parameter_name
+string parameter_string_value
+---
+bool success
+string message
+string persisted_parameter_file
+

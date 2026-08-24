@@ -1,0 +1,18 @@
+builtin_interfaces/Time stamp
+
+bool evaluable
+bool eligible
+string side
+
+float64 measured_lateral_clearance_m
+float64 required_lateral_clearance_m
+
+bool between_pylons
+float64 distance_from_start_boundary_m
+float64 distance_to_end_boundary_m
+float64 pylon_span_margin_m
+
+bool ingress_point_valid
+geometry_msgs/Point ingress_point
+
+string[] failure_reasons

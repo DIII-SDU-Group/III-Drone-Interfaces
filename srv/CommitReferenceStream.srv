@@ -1,0 +1,5 @@
+string stream_id
+uint64 prepared_sequence
+---
+bool accepted
+string reason
