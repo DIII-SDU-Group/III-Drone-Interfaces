@@ -1,0 +1,8 @@
+string stream_id
+uint64 last_applied_sequence
+iii_drone_interfaces/State stopped_state
+---
+bool accepted
+bool abort_action
+string prepared_stream_id
+string reason

@@ -1,0 +1,11 @@
+int32 id
+bool replace_existing
+---
+bool success
+string message
+builtin_interfaces/Time captured_at
+iii_drone_interfaces/Pylon captured_pylon
+bool gnss_reference_valid
+string persistence_source
+iii_drone_interfaces/PylonOverview stored_pylon_overview
+

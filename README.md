@@ -19,7 +19,9 @@ Keeping the interfaces here prevents package-to-package schema drift and makes t
 The message set covers several areas:
 
 - control/state: `State`, `Reference`, `ReferenceTrajectory`, `TrajectoryMode`, `TrajectoryComputeTime`
-- awareness/mission: `CombinedDroneAwareness`, `Maneuver`, `ManeuverQueue`, `Target`, `StringStamped`
+- awareness/mission: `CombinedDroneAwareness`, `Maneuver`, `ManeuverQueue`,
+  `Target`, `MissionModeStatus`, `MissionModeRegistryEntry`,
+  `InspectionStartEligibility`, `StringStamped`
 - perception: `ProjectionPlane`, `SingleLine`, `Powerline`, `PLMapperCommand`
 - payload/charging: `GripperStatus`, `ChargerStatus`, `ChargerOperatingMode`
 
@@ -27,7 +29,10 @@ The message set covers several areas:
 
 The service layer includes:
 
-- configuration services such as `GetParameterYaml`, `GetDeclaredParameters`, `LoadParameters`, `SaveParameters`, `SetParameterFromGC`
+- configuration services such as `GetParameterYaml`, `GetDeclaredParameters`,
+  `LoadParameters`, `SaveParameters`, `SetParameterFromGC`, and the boot-only
+  `SetBootParameter`/`GetPendingBootParameters`/`ActivatePendingBootParameters`
+  transaction.
 - mission/control services such as `ComputeReferenceTrajectory`, `GetReference`, `SetGeneralTargetYaw`, `SetTargetCableId`
 - supervision/system services such as `SystemCommand`, `GetManagedNodes`
 - payload/perception services such as `GripperCommand`, `PLMapperCommand`, `UpdatePowerlineOverview`
@@ -65,3 +70,12 @@ colcon test-result --verbose
 - treat interface changes as cross-package changes
 - update downstream adapters/tests when fields are added or renamed
 - keep file declarations in sync with `CMakeLists.txt`; the tests enforce this
+
+## Compatibility
+
+`MissionModeStatus.modes` is the typed replacement for parsing the legacy
+per-mode `StringStamped` JSON status topics. Those legacy topics remain
+published during migration. Because ROS interface hashes change when fields are
+added, `iii_drone_interfaces`, mission, runtime, and all consumers must be
+rebuilt and deployed together even though the field is additive at the source
+level.

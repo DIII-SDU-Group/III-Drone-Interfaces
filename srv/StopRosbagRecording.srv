@@ -1,0 +1,8 @@
+string recording_id
+float64 timeout_sec
+---
+bool success
+string message
+string recording_id
+string output_dir
+bool was_running

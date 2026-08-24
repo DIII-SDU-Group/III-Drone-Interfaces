@@ -1,0 +1,4 @@
+---
+bool success
+string message
+iii_drone_interfaces/PylonOverview stored_pylon_overview

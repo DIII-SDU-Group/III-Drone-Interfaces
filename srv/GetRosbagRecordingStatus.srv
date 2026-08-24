@@ -1,0 +1,12 @@
+---
+bool recording
+string recording_id
+string output_dir
+string artifact_root
+uint32 pid
+string started_at
+uint64 size_bytes
+uint64 free_space_bytes
+string owner
+string error
+string message

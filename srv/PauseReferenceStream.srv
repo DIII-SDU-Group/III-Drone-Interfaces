@@ -1,0 +1,6 @@
+string stream_id
+uint64 last_applied_sequence
+string reason
+---
+bool accepted
+string reason
