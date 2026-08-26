@@ -14,6 +14,8 @@ string mission_state_label
 string active_catalog_id
 string catalog_hash
 string active_entry_hash
+string active_specification_asset_id
+string[] active_behavior_tree_asset_ids
 string default_catalog_id
 string configuration_profile
 string classification
