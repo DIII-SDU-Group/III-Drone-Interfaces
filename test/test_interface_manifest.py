@@ -62,7 +62,8 @@ def test_interface_manifest_has_messages_and_services():
     assert "ReferenceTrajectory.msg" in message_files
     assert "SystemCommand.srv" in service_files
     assert "UpdatePowerlineOverview.srv" in service_files
-    assert "OverrideMissionSpecification.srv" in service_files
+    assert "GetMissionCatalog.srv" in service_files
+    assert "SelectMissionCatalogEntry.srv" in service_files
     assert len(message_files) >= 10
     assert len(service_files) >= 10
 
@@ -102,7 +103,13 @@ def test_gui_v2_health_messages_cover_required_status_fields():
             "iii_drone_interfaces/SubsystemHealthStatus[] subsystems",
         ],
         "MissionModeStatus.msg": [
-            "string active_mission_specification",
+            "string active_catalog_id",
+            "string catalog_hash",
+            "string active_entry_hash",
+            "string default_catalog_id",
+            "string configuration_profile",
+            "bool temporary_override",
+            "bool catalog_ready",
             "bool required_modes_registered",
             "iii_drone_interfaces/MissionModeRegistryEntry[] modes",
             "string owned_mode",

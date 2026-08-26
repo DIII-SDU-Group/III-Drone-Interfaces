@@ -117,8 +117,8 @@ set(srvs
   srv/GetRosbagRecordingStatus.srv
   srv/StoreCurrentState.srv
   srv/LoadStoredState.srv
-  srv/WriteBehaviorTreeModelXML.srv
-  srv/OverrideMissionSpecification.srv
+  srv/GetMissionCatalog.srv
+  srv/SelectMissionCatalogEntry.srv
 )
 
 # find dependencies

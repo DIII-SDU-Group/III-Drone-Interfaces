@@ -1,0 +1,9 @@
+string catalog_id
+bool use_default
+---
+bool success
+string message
+string active_catalog_id
+string active_entry_hash
+bool temporary_override
+string warning
