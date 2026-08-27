@@ -64,8 +64,42 @@ def test_interface_manifest_has_messages_and_services():
     assert "UpdatePowerlineOverview.srv" in service_files
     assert "GetMissionCatalog.srv" in service_files
     assert "SelectMissionCatalogEntry.srv" in service_files
+    assert "ApplyConfigurationTransaction.srv" in service_files
+    assert "GetConfigurationSession.srv" in service_files
+    assert "EnsureConfigurationSession.srv" in service_files
+    assert "GetConfigurationJournal.srv" in service_files
+    assert "GetParameterFile.srv" in service_files
+    assert "DeleteParameterFile.srv" in service_files
     assert len(message_files) >= 10
     assert len(service_files) >= 10
+
+
+def test_configuration_transaction_services_are_versioned_json_envelopes():
+    apply_contract = (PACKAGE_ROOT / "srv" / "ApplyConfigurationTransaction.srv").read_text()
+    status_contract = (PACKAGE_ROOT / "srv" / "GetConfigurationSession.srv").read_text()
+    ensure_contract = (
+        PACKAGE_ROOT / "srv" / "EnsureConfigurationSession.srv"
+    ).read_text()
+
+    for field in ("string request_json", "bool success", "string message", "string result_json"):
+        assert field in apply_contract
+    for field in ("bool success", "string message", "string session_json"):
+        assert field in status_contract
+        assert field in ensure_contract
+
+    journal_contract = (
+        PACKAGE_ROOT / "srv" / "GetConfigurationJournal.srv"
+    ).read_text()
+    file_contract = (PACKAGE_ROOT / "srv" / "GetParameterFile.srv").read_text()
+    delete_contract = (
+        PACKAGE_ROOT / "srv" / "DeleteParameterFile.srv"
+    ).read_text()
+    for field in ("string request_json", "string journal_json"):
+        assert field in journal_contract
+    for field in ("string file", "string parameter_yaml", "string content_sha256"):
+        assert field in file_contract
+    for field in ("string request_json", "string result_json"):
+        assert field in delete_contract
 
 
 def test_simulation_ground_truth_interfaces_encode_required_alignment_and_classes():
