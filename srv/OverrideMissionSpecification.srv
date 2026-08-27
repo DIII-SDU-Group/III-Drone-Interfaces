@@ -1,6 +1,0 @@
-string mission_specification_file
-bool use_default
----
-bool success
-string message
-string active_mission_specification_file

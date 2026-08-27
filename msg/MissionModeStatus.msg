@@ -11,12 +11,20 @@ uint8 MISSION_STATE_ERROR = 7
 
 uint8 mission_state
 string mission_state_label
-string active_mission_specification
-string canonical_mission_specification
-string active_mission_specification_hash
-bool canonical_mission_specification_loaded
+string active_catalog_id
+string catalog_hash
+string active_entry_hash
+string active_specification_asset_id
+string[] active_behavior_tree_asset_ids
+string default_catalog_id
 string configuration_profile
-string mission_specification_load_error
+string classification
+string[] compatible_profiles
+bool temporary_override
+bool experimental
+string experimental_warning
+bool catalog_ready
+string catalog_error
 bool mission_active
 
 bool required_modes_registered

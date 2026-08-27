@@ -1,0 +1,6 @@
+string file
+---
+bool success
+string message
+string parameter_yaml
+string content_sha256
