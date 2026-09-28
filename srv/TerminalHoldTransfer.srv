@@ -1,0 +1,15 @@
+uint8 OP_QUERY=0
+uint8 OP_CLAIM=1
+
+uint8 operation
+string source_request_identity
+string source_stream_id
+uint64 source_ack_sequence
+string consumer_identity
+---
+bool accepted
+string reason
+string source_request_identity
+string source_stream_id
+uint64 source_ack_sequence
+iii_drone_interfaces/Reference reference

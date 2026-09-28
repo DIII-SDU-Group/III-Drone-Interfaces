@@ -109,6 +109,7 @@ set(srvs
   srv/PauseReferenceStream.srv
   srv/RebaseReferenceStream.srv
   srv/CommitReferenceStream.srv
+  srv/TerminalHoldTransfer.srv
   srv/ClearManeuverQueue.srv
   srv/RegisterOffboardMode.srv
   srv/GetManagedNodes.srv

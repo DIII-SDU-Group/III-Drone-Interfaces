@@ -1,4 +1,7 @@
 string reason
+# Empty retains the explicit operator-wide clear. A nonempty identity clears
+# only queued maneuvers owned by that action request.
+string request_identity
 ---
 bool success
 uint32 cleared_count
