@@ -214,3 +214,26 @@ def test_maneuver_reference_stream_contract_is_explicit():
     commit_contract = (PACKAGE_ROOT / "srv" / "CommitReferenceStream.srv").read_text()
     assert "string stream_id" in commit_contract
     assert "uint64 prepared_sequence" in commit_contract
+
+
+def test_mission_exit_contract_is_explicit():
+    release = (PACKAGE_ROOT / "srv" / "ReleaseConsumerControl.srv").read_text()
+    for fragment in [
+        "string producer_epoch",
+        "uint64 last_request_counter",
+        "uint8 reason",
+        "uint8 px4_nav_state",
+        "bool accepted",
+        "uint32 cleared_queued_count",
+        "uint32 released_active_count",
+        "uint32 retired_owner_count",
+    ]:
+        assert fragment in release
+
+    status = (PACKAGE_ROOT / "msg" / "MissionModeStatus.msg").read_text()
+    for fragment in [
+        "string exit_reason",
+        "uint8 exit_px4_nav_state",
+        "builtin_interfaces/Time exit_stamp",
+    ]:
+        assert fragment in status

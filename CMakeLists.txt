@@ -111,6 +111,7 @@ set(srvs
   srv/CommitReferenceStream.srv
   srv/TerminalHoldTransfer.srv
   srv/ClearManeuverQueue.srv
+  srv/ReleaseConsumerControl.srv
   srv/RegisterOffboardMode.srv
   srv/GetManagedNodes.srv
   srv/UpdatePowerlineOverview.srv

@@ -36,6 +36,13 @@ iii_drone_interfaces/InspectionStartEligibility inspection_start_eligibility
 string owned_mode
 string control_owner
 
+# Last Mission Exit: PX4 took command authority away from the mission
+# executor (operator mode change, stick override or failsafe). Empty when no
+# run of this mission process has exited that way.
+string exit_reason
+uint8 exit_px4_nav_state
+builtin_interfaces/Time exit_stamp
+
 bool ready
 bool degraded
 string degraded_reason

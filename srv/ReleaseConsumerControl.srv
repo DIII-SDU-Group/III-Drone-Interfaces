@@ -1,0 +1,25 @@
+# Mission Exit: the Mission consumer intentionally ended its PX4 command
+# authority (an operator selected another PX4 mode, or PX4 entered failsafe).
+# Core ends every maneuver owner minted by that producer, scoped to request
+# identities of producer_epoch whose counter is <= last_request_counter:
+# queued goals are removed, an executing goal ends without controlled-cancel
+# ACK waits, a late goal is accepted and aborted without executing, and a
+# completed retained owner (terminal hold, object session, idle callback) is
+# retired instead of waiting for native-navigation inference or ACK timeouts.
+uint8 REASON_OPERATOR_MODE_CHANGE=0
+uint8 REASON_OPERATOR_STICK_OVERRIDE=1
+uint8 REASON_FAILSAFE=2
+uint8 REASON_OTHER=3
+
+# "mri1-" followed by the 32 hex digit process epoch of the request identities.
+string producer_epoch
+uint64 last_request_counter
+uint8 reason
+# PX4 navigation state that ended the mission (diagnostic only).
+uint8 px4_nav_state
+---
+bool accepted
+string reason
+uint32 cleared_queued_count
+uint32 released_active_count
+uint32 retired_owner_count
