@@ -6,5 +6,13 @@ float32 target_yaw_rate
 
 float32 duration_s # The duration for which the maneuver controller will keep publishing references before becoming idle.
 bool sustain_action # If true, the maneuver controller will sustain the action running for the duration of the maneuver. Otherwise, it will succeed immediately but keep providing references for the duration.
+
+# Pre-release push (m/s^2, 0 = off). When positive, the vertical axis is
+# commanded as this upward acceleration instead of target_z_velocity; PX4
+# turns it into thrust = hover thrust * (1 + a/g). A sustained goal succeeds
+# once PX4 applies the push (airborne, commanding thrust) and it has ramped to
+# this value; the push then continues for duration_s after success, until a
+# successor maneuver takes over.
+float32 push_upwards_acceleration
 ---
 ---
