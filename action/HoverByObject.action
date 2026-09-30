@@ -1,3 +1,4 @@
+string request_identity
 iii_drone_interfaces/Target target
 
 float32 duration_s # The duration for which the maneuver controller will keep publishing references before becoming idle.

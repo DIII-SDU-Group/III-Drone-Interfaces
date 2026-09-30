@@ -91,6 +91,12 @@ set(srvs
   srv/GetParameterFiles.srv
   srv/LoadParameters.srv
   srv/SetParameterFromGC.srv
+  srv/ApplyConfigurationTransaction.srv
+  srv/GetConfigurationSession.srv
+  srv/EnsureConfigurationSession.srv
+  srv/GetConfigurationJournal.srv
+  srv/GetParameterFile.srv
+  srv/DeleteParameterFile.srv
   srv/SetBootParameter.srv
   srv/GetPendingBootParameters.srv
   srv/ActivatePendingBootParameters.srv
@@ -103,7 +109,9 @@ set(srvs
   srv/PauseReferenceStream.srv
   srv/RebaseReferenceStream.srv
   srv/CommitReferenceStream.srv
+  srv/TerminalHoldTransfer.srv
   srv/ClearManeuverQueue.srv
+  srv/ReleaseConsumerControl.srv
   srv/RegisterOffboardMode.srv
   srv/GetManagedNodes.srv
   srv/UpdatePowerlineOverview.srv
@@ -117,8 +125,8 @@ set(srvs
   srv/GetRosbagRecordingStatus.srv
   srv/StoreCurrentState.srv
   srv/LoadStoredState.srv
-  srv/WriteBehaviorTreeModelXML.srv
-  srv/OverrideMissionSpecification.srv
+  srv/GetMissionCatalog.srv
+  srv/SelectMissionCatalogEntry.srv
 )
 
 # find dependencies

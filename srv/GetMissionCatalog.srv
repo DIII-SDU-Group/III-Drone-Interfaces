@@ -1,0 +1,5 @@
+bool include_incompatible
+---
+bool success
+string message
+string catalog_json
