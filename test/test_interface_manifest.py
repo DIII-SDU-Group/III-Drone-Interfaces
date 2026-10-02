@@ -113,6 +113,10 @@ def test_simulation_ground_truth_interfaces_encode_required_alignment_and_classe
             "uint8 CLUTTER_NO_PHYSICAL_SOURCE=3", "uint32 source_point_index",
             "string physical_conductor_id", "geometry_msgs/Point ideal_generating_point_world",
             "geometry_msgs/Point nearest_physical_point_world",
+            "float64 conductor_parameter_m", "uint8 ORTHOGONAL_NEAREST=1",
+            "uint8 FOV_LIMITED=2", "uint16 active_support_boundaries",
+            "float64 unconstrained_nearest_distance_m",
+            "float64 line_of_sight_tangent_angle_rad",
         ],
         "RadarScanGroundTruth.msg": ["uint64 scan_sequence", "RadarPointSource[] points"],
         "CameraFrameGroundTruth.msg": [

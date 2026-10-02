@@ -23,8 +23,14 @@ set(msgs
  msg/StaticConductorGeometry.msg
  msg/RadarPointSource.msg
  msg/RadarScanGroundTruth.msg
+ msg/RadarDetectionTruthV2.msg
+ msg/RadarScanTruthV2.msg
  msg/CameraConductorVisibility.msg
  msg/CameraFrameGroundTruth.msg
+ msg/CameraPylonVisibility.msg
+ msg/PylonCameraFrameGroundTruth.msg
+ msg/PylonExactMaskVisibility.msg
+ msg/PylonExactMaskFrameGroundTruth.msg
  msg/ProjectionPlane.msg
   msg/Powerline.msg
   msg/PowerlineOverviewStatus.msg
