@@ -96,7 +96,6 @@ set(srvs
   srv/EnsureConfigurationSession.srv
   srv/GetConfigurationJournal.srv
   srv/GetParameterFile.srv
-  srv/DeleteParameterFile.srv
   srv/SetBootParameter.srv
   srv/GetPendingBootParameters.srv
   srv/ActivatePendingBootParameters.srv

@@ -69,7 +69,6 @@ def test_interface_manifest_has_messages_and_services():
     assert "EnsureConfigurationSession.srv" in service_files
     assert "GetConfigurationJournal.srv" in service_files
     assert "GetParameterFile.srv" in service_files
-    assert "DeleteParameterFile.srv" in service_files
     assert len(message_files) >= 10
     assert len(service_files) >= 10
 
@@ -91,15 +90,10 @@ def test_configuration_transaction_services_are_versioned_json_envelopes():
         PACKAGE_ROOT / "srv" / "GetConfigurationJournal.srv"
     ).read_text()
     file_contract = (PACKAGE_ROOT / "srv" / "GetParameterFile.srv").read_text()
-    delete_contract = (
-        PACKAGE_ROOT / "srv" / "DeleteParameterFile.srv"
-    ).read_text()
     for field in ("string request_json", "string journal_json"):
         assert field in journal_contract
     for field in ("string file", "string parameter_yaml", "string content_sha256"):
         assert field in file_contract
-    for field in ("string request_json", "string result_json"):
-        assert field in delete_contract
 
 
 def test_simulation_ground_truth_interfaces_encode_required_alignment_and_classes():
