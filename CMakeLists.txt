@@ -93,7 +93,6 @@ set(srvs
   srv/SetParameterFromGC.srv
   srv/ApplyConfigurationTransaction.srv
   srv/GetConfigurationSession.srv
-  srv/EnsureConfigurationSession.srv
   srv/GetConfigurationJournal.srv
   srv/GetParameterFile.srv
   srv/SetBootParameter.srv
