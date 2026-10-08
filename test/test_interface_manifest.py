@@ -62,9 +62,33 @@ def test_interface_manifest_has_messages_and_services():
     assert "ReferenceTrajectory.msg" in message_files
     assert "SystemCommand.srv" in service_files
     assert "UpdatePowerlineOverview.srv" in service_files
-    assert "OverrideMissionSpecification.srv" in service_files
+    assert "GetMissionCatalog.srv" in service_files
+    assert "SelectMissionCatalogEntry.srv" in service_files
+    assert "ApplyConfigurationTransaction.srv" in service_files
+    assert "GetConfigurationSession.srv" in service_files
+    assert "GetConfigurationJournal.srv" in service_files
+    assert "GetParameterFile.srv" in service_files
     assert len(message_files) >= 10
     assert len(service_files) >= 10
+
+
+def test_configuration_transaction_services_are_versioned_json_envelopes():
+    apply_contract = (PACKAGE_ROOT / "srv" / "ApplyConfigurationTransaction.srv").read_text()
+    status_contract = (PACKAGE_ROOT / "srv" / "GetConfigurationSession.srv").read_text()
+
+    for field in ("string request_json", "bool success", "string message", "string result_json"):
+        assert field in apply_contract
+    for field in ("bool success", "string message", "string session_json"):
+        assert field in status_contract
+
+    journal_contract = (
+        PACKAGE_ROOT / "srv" / "GetConfigurationJournal.srv"
+    ).read_text()
+    file_contract = (PACKAGE_ROOT / "srv" / "GetParameterFile.srv").read_text()
+    for field in ("string request_json", "string journal_json"):
+        assert field in journal_contract
+    for field in ("string file", "string parameter_yaml", "string content_sha256"):
+        assert field in file_contract
 
 
 def test_simulation_ground_truth_interfaces_encode_required_alignment_and_classes():
@@ -102,7 +126,13 @@ def test_gui_v2_health_messages_cover_required_status_fields():
             "iii_drone_interfaces/SubsystemHealthStatus[] subsystems",
         ],
         "MissionModeStatus.msg": [
-            "string active_mission_specification",
+            "string active_catalog_id",
+            "string catalog_hash",
+            "string active_entry_hash",
+            "string default_catalog_id",
+            "string configuration_profile",
+            "bool temporary_override",
+            "bool catalog_ready",
             "bool required_modes_registered",
             "iii_drone_interfaces/MissionModeRegistryEntry[] modes",
             "string owned_mode",
@@ -173,3 +203,26 @@ def test_maneuver_reference_stream_contract_is_explicit():
     commit_contract = (PACKAGE_ROOT / "srv" / "CommitReferenceStream.srv").read_text()
     assert "string stream_id" in commit_contract
     assert "uint64 prepared_sequence" in commit_contract
+
+
+def test_mission_exit_contract_is_explicit():
+    release = (PACKAGE_ROOT / "srv" / "ReleaseConsumerControl.srv").read_text()
+    for fragment in [
+        "string producer_epoch",
+        "uint64 last_request_counter",
+        "uint8 reason",
+        "uint8 px4_nav_state",
+        "bool accepted",
+        "uint32 cleared_queued_count",
+        "uint32 released_active_count",
+        "uint32 retired_owner_count",
+    ]:
+        assert fragment in release
+
+    status = (PACKAGE_ROOT / "msg" / "MissionModeStatus.msg").read_text()
+    for fragment in [
+        "string exit_reason",
+        "uint8 exit_px4_nav_state",
+        "builtin_interfaces/Time exit_stamp",
+    ]:
+        assert fragment in status
